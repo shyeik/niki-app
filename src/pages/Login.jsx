@@ -13,7 +13,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post(`${API}/api/auth/login`, { name, password })
+      const res = await axios.post(`${API}api/auth/login`, { name, password })
       localStorage.setItem("token", res.data.token)
       navigate("/admin/dashboard")
     } catch (err) {
