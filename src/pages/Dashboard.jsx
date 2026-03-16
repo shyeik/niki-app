@@ -1,7 +1,7 @@
 import AdminLayout from "../layout/AdminLayout"
 import TodoList from "../components/TodoList"
 import UploadVideo from "../components/UploadVideo"
-import NiKiUpdates from "../components/NiKiUpdates"
+import NikiUpdates from "../components/NikiUpdates"
 
 function Dashboard() {
   return (
@@ -16,7 +16,7 @@ function Dashboard() {
       }}>
         <TodoList />
         <UploadVideo />
-        <NiKiUpdates />
+        <NikiUpdates />
       </div>
     </AdminLayout>
   )
