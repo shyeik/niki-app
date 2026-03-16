@@ -5,6 +5,9 @@ import Users from "./pages/Users"
 import Login from "./pages/Login"
 import ProtectedRoute from "./utils/ProtectedRoute"
 import Register from "./pages/Register"
+import TodoList from "./components/TodoList"
+import UploadVideo from "./components/UploadVideo"
+import NiKiUpdates from "./components/NiKiUpdates"
 
 function App() {
   return (
@@ -13,27 +16,22 @@ function App() {
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/admin/dashboard"
-          element={
-            <ProtectedRoute>
-              <AdminLayout>
-                <Dashboard />
-              </AdminLayout>
-            </ProtectedRoute>
-          }
-        />
 
         <Route
-          path="/admin/users"
+          path="/admin"
           element={
             <ProtectedRoute>
-              <AdminLayout>
-                <Users />
-              </AdminLayout>
+              <AdminLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="users" element={<Users />} />
+           <Route path="todo" element={<TodoList />} />
+           <Route path="upload-video" element={<UploadVideo />} />
+           <Route path="updates" element={<NiKiUpdates  />} />
+        
+        </Route>
 
       </Routes>
     </BrowserRouter>
