@@ -7,7 +7,7 @@ import ProtectedRoute from "./utils/ProtectedRoute"
 import Register from "./pages/Register"
 import TodoList from "./components/TodoList"
 import UploadVideo from "./components/UploadVideo"
-import NiKiUpdates from "./components/NiKiUpdates"
+import NikiUpdates from "./components/NikiUpdates"
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <Route path="users" element={<Users />} />
            <Route path="todo" element={<TodoList />} />
            <Route path="upload-video" element={<UploadVideo />} />
-           <Route path="updates" element={<NiKiUpdates  />} />
+           <Route path="updates" element={<NikiUpdates  />} />
         
         </Route>
 
