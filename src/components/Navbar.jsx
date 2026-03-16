@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom"
 
 function Navbar() {
   const navigate = useNavigate()
+  const username = localStorage.getItem("username")
 
   const handleLogout = () => {
     localStorage.removeItem("token")
+    localStorage.removeItem("username")
     navigate("/login")
   }
 
@@ -23,7 +25,9 @@ function Navbar() {
       <h3 style={{ color: "#ff4da6" }}>Ni-Ki Admin Dashboard</h3>
 
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        <span style={{ color: "#555" }}>Admin</span>
+        <span style={{ color: "#555" }}>
+          Hello <b>{username}</b>
+        </span>
 
         <button
           onClick={handleLogout}
