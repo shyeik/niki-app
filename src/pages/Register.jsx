@@ -14,7 +14,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post(`${API}/api/auth/register`, { name, email, password })
+      const res = await axios.post(`${API}api/auth/register`, { name, email, password })
       setSuccess(res.data.message)
       setError("")
       // Redirect to login after registration
