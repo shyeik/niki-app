@@ -4,7 +4,7 @@ import {
   FaCalendarAlt,
   FaClipboardList,
   FaVideo,
-  FaNewspaper
+  FaNewspaper,
 } from "react-icons/fa";
 import "../design/components/sidebar.css";
 
@@ -26,8 +26,12 @@ function Sidebar() {
     {
       title: "CONTENT",
       links: [
-        { name: "Upload Video", path: "/admin/upload-video", icon: <FaVideo /> },
-        { name: "Ni-Ki Updates", path: "/admin/updates", icon: <FaNewspaper /> },
+        { name: "Tutorials", path: "/admin/tutorials", icon: <FaVideo /> },
+        {
+          name: "Updates",
+          path: "/admin/updates",
+          icon: <FaNewspaper />,
+        },
       ],
     },
   ];

@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <h3 className="navbar-title">Ni-Ki Admin Dashboard</h3>
+      <h3 className="navbar-title">CONTENT MANAGEMENT SYSTEM</h3>
 
       <div className="navbar-user">
         <span>
