@@ -9,11 +9,13 @@ import Events from "./pages/Events";
 import Tutorials from "./pages/Tutorial";
 import TodoList from "./pages/TodoList";
 import Updates from "./pages/Updates";
+import Mainpage from "./client/pages/MainPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Mainpage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 

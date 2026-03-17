@@ -31,7 +31,7 @@ function Sidebar() {
           name: "Updates",
           path: "/admin/updates",
           icon: <FaNewspaper />,
-        },
+        },  
       ],
     },
   ];

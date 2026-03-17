@@ -1,0 +1,71 @@
+.updates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.update-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+  position: relative;
+}
+
+.update-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+.update-card:hover .update-overlay {
+  opacity: 1;
+}
+
+.update-thumb-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  background: var(--surface2);
+}
+
+.update-thumb-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--muted);
+}
+
+.update-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 6, 8, 0.9) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+}
+
+.update-caption {
+  font-size: 13px;
+  color: var(--text);
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+}
+
+.update-date {
+  padding: 12px 14px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  border-top: 0.5px solid var(--border);
+}

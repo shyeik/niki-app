@@ -1,0 +1,30 @@
+.footer {
+  padding: 48px;
+  border-top: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+  letter-spacing: 0.25em;
+  color: var(--pink);
+}
+
+.footer-note {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 32px 24px;
+    flex-direction: column;
+    text-align: center;
+  }
+}
