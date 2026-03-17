@@ -8,7 +8,7 @@ export default function Footer() {
         Fan-made page. All content belongs to respective owners. ENHYPEN ©
         BELIFT LAB
       </div>
-      <div className="footer-note">Powered by the CMS</div>
+      <div className="footer-note">Developer: Shyeik</div>
     </footer>
   );
 }

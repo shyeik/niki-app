@@ -1,7 +1,11 @@
-import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
-import Modal from "../modals/Modals";
 import "../design/update.css";
+
+// Strips HTML tags stored in DB fields e.g. "<div><div>text</div></div>" → "text"
+function stripHtml(str) {
+  if (!str) return "";
+  return str.replace(/<[^>]*>/g, "").trim();
+}
 
 function fmt(dateStr) {
   if (!dateStr) return "";
@@ -26,7 +30,6 @@ function SkeletonGrid() {
 
 export default function Updates() {
   const { data: posts, loading, error } = useFetch("api/posts");
-  const [modal, setModal] = useState(null);
 
   return (
     <section id="updates">
@@ -53,22 +56,12 @@ export default function Updates() {
         ) : (
           <div className="updates-grid">
             {posts.map((post) => (
-              <div
-                key={post._id}
-                className="update-card"
-                onClick={() =>
-                  setModal({
-                    meta: fmt(post.createdAt || post.date),
-                    title: post.caption || "Update",
-                    body: post.description || post.caption || "",
-                  })
-                }
-              >
+              <div key={post._id} className="update-card">
                 {post.image ? (
                   <img
                     className="update-thumb-img"
                     src={post.image}
-                    alt={post.caption || "update"}
+                    alt={stripHtml(post.caption) || "update"}
                     loading="lazy"
                   />
                 ) : post.video ? (
@@ -79,7 +72,7 @@ export default function Updates() {
 
                 <div className="update-overlay">
                   <div className="update-caption">
-                    {post.caption || "View update"}
+                    {stripHtml(post.caption) || "View update"}
                   </div>
                 </div>
 
@@ -91,14 +84,6 @@ export default function Updates() {
           </div>
         )}
       </div>
-
-      <Modal
-        isOpen={!!modal}
-        onClose={() => setModal(null)}
-        meta={modal?.meta}
-        title={modal?.title}
-        body={modal?.body}
-      />
     </section>
   );
 }
