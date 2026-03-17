@@ -1,0 +1,35 @@
+.admin-layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar fixed */
+.admin-sidebar {
+  width: 210px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+/* Right section */
+.admin-main {
+  margin-left: 240px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Navbar fixed at top */
+.admin-navbar {
+  position: sticky;
+  top: 0;
+}
+
+/* Scrollable content */
+.admin-content {
+  padding: 30px;
+  background: #fff0f6;
+  flex: 1;
+  overflow-y: auto;
+}

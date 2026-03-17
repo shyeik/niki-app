@@ -1,18 +1,23 @@
 import Sidebar from "../components/Sidebar"
 import Navbar from "../components/Navbar"
 import { Outlet } from "react-router-dom"
+import "../design/adminLayout.css"
 
 function AdminLayout() {
   return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
-      
-      <Sidebar />
+    <div className="admin-layout">
 
-      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-        
-        <Navbar />
+      <div className="admin-sidebar">
+        <Sidebar />
+      </div>
 
-        <div style={{ padding: "30px", background: "#fff0f6", flex: 1 }}>
+      <div className="admin-main">
+
+        <div className="admin-navbar">
+          <Navbar />
+        </div>
+
+        <div className="admin-content">
           <Outlet />
         </div>
 

@@ -1,0 +1,81 @@
+.event-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.event-title {
+  text-align:left;
+  margin-bottom: 20px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.event-card {
+  background: #ec4899;
+  color: white;
+  padding: 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.calendar-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.event-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+}
+
+.event-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.event-date {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 5px;
+}
+.event-desc {
+  line-clamp: 3;
+  overflow: hidden;
+  font-size: 13px;
+  color: #475569;
+  margin-top: 8px;
+  word-break: break-word;
+}
+
+.event-badge {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  padding: 4px 8px;
+  background: #ec4899;
+  color: white;
+  border-radius: 6px;
+}

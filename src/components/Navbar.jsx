@@ -1,50 +1,31 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import "../design/components/navbar.css";
 
 function Navbar() {
-  const navigate = useNavigate()
-  const username = localStorage.getItem("username")
+  const navigate = useNavigate();
+  const username = localStorage.getItem("username");
 
   const handleLogout = () => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("username")
-    navigate("/login")
-  }
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    navigate("/login");
+  };
 
   return (
-    <div
-      style={{
-        height: "60px",
-        background: "#ffffff",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "0 20px",
-        borderBottom: "1px solid #f3c6d3",
-      }}
-    >
-      <h3 style={{ color: "#ff4da6" }}>Ni-Ki Admin Dashboard</h3>
+    <div className="navbar">
+      <h3 className="navbar-title">Ni-Ki Admin Dashboard</h3>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-        <span style={{ color: "#555" }}>
+      <div className="navbar-user">
+        <span>
           Hello <b>{username}</b>
         </span>
 
-        <button
-          onClick={handleLogout}
-          style={{
-            background: "#ff4da6",
-            color: "white",
-            border: "none",
-            padding: "6px 12px",
-            borderRadius: "6px",
-            cursor: "pointer",
-          }}
-        >
+        <button className="navbar-button" onClick={handleLogout}>
           Logout
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

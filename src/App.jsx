@@ -5,9 +5,10 @@ import Users from "./pages/Users"
 import Login from "./pages/Login"
 import ProtectedRoute from "./utils/ProtectedRoute"
 import Register from "./pages/Register"
-import TodoList from "./components/TodoList"
-import UploadVideo from "./components/UploadVideo"
-import NikiUpdates from "./components/NikiUpdates"
+import Events from "./pages/Events"
+import UploadVideo from "./pages/UploadVideo"
+import TodoList from "./pages/TodoList"
+import NikiUpdates from "./pages/NikiUpdates"
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         >
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<Users />} />
+           <Route path="events" element={<Events />} />
            <Route path="todo" element={<TodoList />} />
            <Route path="upload-video" element={<UploadVideo />} />
            <Route path="updates" element={<NikiUpdates  />} />

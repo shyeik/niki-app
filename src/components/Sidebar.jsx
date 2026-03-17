@@ -1,48 +1,61 @@
-import { NavLink } from "react-router-dom"
-import { FaTasks, FaUpload, FaEdit } from "react-icons/fa"
+import { NavLink } from "react-router-dom";
+import {
+  FaHome,
+  FaCalendarAlt,
+  FaClipboardList,
+  FaVideo,
+  FaNewspaper
+} from "react-icons/fa";
+import "../design/components/sidebar.css";
 
 function Sidebar() {
-  const links = [
-    { name: "Todo List", path: "/admin/todo", icon: <FaTasks /> },
-    { name: "Upload Video", path: "/admin/upload-video", icon: <FaUpload /> },
-    { name: "Update Ni-Ki Updates", path: "/admin/updates", icon: <FaEdit /> },
-  ]
+  const sections = [
+    {
+      title: "OVERVIEW",
+      links: [
+        { name: "Dashboard", path: "/admin/dashboard", icon: <FaHome /> },
+      ],
+    },
+    {
+      title: "MANAGEMENT",
+      links: [
+        { name: "Events", path: "/admin/events", icon: <FaCalendarAlt /> },
+        { name: "Todo List", path: "/admin/todo", icon: <FaClipboardList /> },
+      ],
+    },
+    {
+      title: "CONTENT",
+      links: [
+        { name: "Upload Video", path: "/admin/upload-video", icon: <FaVideo /> },
+        { name: "Ni-Ki Updates", path: "/admin/updates", icon: <FaNewspaper /> },
+      ],
+    },
+  ];
 
   return (
-    <div style={{
-      width: "220px",
-      backgroundColor: "#ffe6f0",
-      minHeight: "100vh",
-      padding: "20px",
-      display: "flex",
-      flexDirection: "column",
-      boxShadow: "2px 0 10px rgba(255, 182, 193, 0.4)",
-    }}>
-      <h2 style={{color: "#ff4da6", marginBottom: "30px", textAlign: "center"}}>Admin Panel</h2>
-      
-      {links.map(link => (
-        <NavLink
-          key={link.path}
-          to={link.path}
-          style={({ isActive }) => ({
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "12px 15px",
-            marginBottom: "10px",
-            borderRadius: "8px",
-            color: isActive ? "white" : "#ff4da6",
-            backgroundColor: isActive ? "#ff4da6" : "transparent",
-            textDecoration: "none",
-            fontWeight: "500",
-            transition: "all 0.2s",
-          })}
-        >
-          {link.icon} {link.name}
-        </NavLink>
+    <div className="sidebar">
+      <h2 className="sidebar-title">Admin Panel</h2>
+
+      {sections.map((section) => (
+        <div key={section.title} className="sidebar-section">
+          <p className="sidebar-category">{section.title}</p>
+
+          {section.links.map((link) => (
+            <NavLink
+              key={link.path}
+              to={link.path}
+              className={({ isActive }) =>
+                isActive ? "sidebar-link active" : "sidebar-link"
+              }
+            >
+              <span className="sidebar-icon">{link.icon}</span>
+              {link.name}
+            </NavLink>
+          ))}
+        </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

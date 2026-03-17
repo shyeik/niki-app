@@ -1,0 +1,18 @@
+
+/* ================= CALENDAR ================= */
+.calendar-container {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+/* Make FullCalendar bigger */
+.fc {
+  max-width: 100%;
+  font-size: 14px;
+}
+
+.fc-toolbar-title {
+  font-size: 20px;
+  color: #ff4da6;
+}
