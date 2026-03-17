@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
 
 /* ── CSS Variables ── */
-:root {
+.todo-page-root {
   --bg: #f7f5f2;
   --surface: #ffffff;
   --surface-2: #faf8f6;

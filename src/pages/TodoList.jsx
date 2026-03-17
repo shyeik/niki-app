@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-
+import "../design/pages/todolist.css";
 import AddTaskModal from "../modals/AddTaskModal";
 
 const API = import.meta.env.VITE_API_BASE_URL;
