@@ -53,13 +53,22 @@ export default function Mainpage() {
 
   // ⏳ Loading UI
   if (loading) {
-    return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
+    return (
+      <div className="page-state">
+        <div className="loader"></div>
+        <p className="state-text">Loading...</p>
+      </div>
+    );
   }
 
   // ❌ Error UI
   if (error) {
     return (
-      <h2 style={{ textAlign: "center", color: "red" }}>Failed to load data</h2>
+      <div className="page-state error">
+        <div className="error-icon">⚠️</div>
+        <p className="state-text">Failed to load data</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
     );
   }
 
