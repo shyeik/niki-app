@@ -1,17 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap");
 
 .main-page {
-  --bg: #0a0608;
-  --surface: #120d10;
+  --bg: #ffc7e3;
+  --surface: #e5e3e4;
   --surface2: #1c1318;
   --border: rgba(255, 200, 220, 0.08);
-  --border-hover: rgba(255, 200, 220, 0.2);
+  --border-hover: rgba(234, 234, 234, 0.2);
   --pink: #f7a8c4;
   --pink-bright: #ff6fa8;
   --gold: #e8c97a;
-  --text: #f0e8ec;
+  --text: #000000;
   --muted: #9a8890;
-  --glow: rgba(247, 168, 196, 0.15);
+  --glow: rgba(206, 206, 206, 0.15);
 
   font-family: "DM Sans", sans-serif;
   background: var(--bg);
