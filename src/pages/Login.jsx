@@ -9,51 +9,101 @@ function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     try {
+      setLoading(true);
       const res = await axios.post(`${API}api/auth/login`, { name, password });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("username", res.data.name);
       navigate("/admin/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="login-container">
-      <div className="login-box">
-        <h2 className="login-title">Admin Login</h2>
-        <p className="login-subtitle">Welcome back!</p>
+      {/* ── Left decorative panel ── */}
+      <div className="login-panel-left">
+        <div className="login-panel-brand">
+          <div className="login-panel-logo">
+            Ni<span>·</span>Ki
+          </div>
+          <p className="login-panel-tagline">어서 오세요 · Fan Hub</p>
+        </div>
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            className="login-input"
-          />
+        {/* Decorative elements */}
+        <div className="login-ring" />
+        <div className="login-dots">
+          {Array.from({ length: 25 }).map((_, i) => (
+            <span key={i} />
+          ))}
+        </div>
+      </div>
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="login-input"
-          />
+      {/* ── Right form panel ── */}
+      <div className="login-panel-right">
+        <div className="login-box">
+          <p className="login-eyebrow">Admin Portal</p>
+          <h1 className="login-title">Welcome back</h1>
+          <p className="login-subtitle">Sign in to manage the fan hub.</p>
 
-          {error && <p className="login-error">{error}</p>}
+          <form className="login-form" onSubmit={handleSubmit}>
+            <div>
+              <label className="login-field-label">Username</label>
+              <div className="login-input-wrap">
+                <span className="login-input-icon">👤</span>
+                <input
+                  type="text"
+                  placeholder="Enter your username"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="login-input"
+                  autoComplete="username"
+                />
+              </div>
+            </div>
 
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </form>
+            <div>
+              <label className="login-field-label">Password</label>
+              <div className="login-input-wrap">
+                <span className="login-input-icon">🔒</span>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="login-input"
+                  autoComplete="current-password"
+                />
+              </div>
+            </div>
+
+            {error && (
+              <p className="login-error">
+                <span>✕</span> {error}
+              </p>
+            )}
+
+            <button type="submit" className="login-button" disabled={loading}>
+              {loading ? "Signing in..." : "Sign In"}
+            </button>
+          </form>
+
+          <div className="login-footer">
+            Artist Fan Hub &nbsp;·&nbsp; <span>✦</span> &nbsp;Authorized access
+            only
+          </div>
+        </div>
       </div>
     </div>
   );
