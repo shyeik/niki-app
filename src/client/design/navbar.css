@@ -9,7 +9,7 @@ nav {
   justify-content: space-between;
   padding: 20px 48px;
   backdrop-filter: blur(20px);
-  background: rgba(10, 6, 8, 0.7);
+  background: rgba(10, 6, 8, 0.1);
   border-bottom: 0.5px solid var(--border);
 }
 
@@ -17,7 +17,7 @@ nav {
   font-family: "Cinzel", serif;
   font-size: 18px;
   letter-spacing: 0.25em;
-  color: var(--pink);
+  color: pink;
   text-decoration: none;
 }
 
@@ -31,29 +31,29 @@ nav {
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgb(48, 22, 46);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .nav-links a:hover {
-  color: var(--pink);
+  color: #f564bb;
 }
 
 .nav-pill {
   font-size: 11px;
   padding: 6px 18px;
-  border: 0.5px solid var(--pink);
+  border: 0.5px solid pink;
   border-radius: 20px;
-  color: var(--pink);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   letter-spacing: 0.08em;
   transition: all 0.2s;
 }
 
 .nav-pill:hover {
-  background: var(--pink);
-  color: var(--bg);
+  background: #ed4bc550;
+  color: #000000;
 }
 
 @media (max-width: 768px) {

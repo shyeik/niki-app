@@ -1,19 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap");
 
 .main-page {
-  --bg: #b50a5f;
-  --surface: rgba(24, 14, 24, 0.244);
-
-  --surface2: #2b1f2b6c;
-  --border: rgba(27, 27, 27, 0.08);
-  --border-hover: rgba(234, 234, 234, 0.2);
-  --pink: #fa44d5;
-  --pink-bright: hsla(316, 91%, 75%, 0.779);
+  --bg: #f34fa4;
+  --surface: #eb359361;
+  --surface2: #3b333b2f;
+  --border: rgba(202, 45, 155, 0.467);
+  --border-hover: rgba(226, 114, 211, 0.438);
+  --pink: #0404048b;
+  --pink-bright: hsla(301, 86%, 44%, 0.671);
   --gold: #e8c97a;
-  --text: #ffffff;
+  --text: #e7e3e3f3;
   --text2: #ffffff;
-  --muted: #000000;
-  --glow: rgba(231, 12, 151, 0.73);
+  --muted: #05050577;
+  --glow: rgba(255, 255, 255, 0.73);
 
   font-family: "DM Sans", sans-serif;
   background: var(--bg);
@@ -105,9 +104,9 @@ section {
 }
 
 .btn-primary:hover {
-  background: var(--pink);
+  background: #f476eb;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 111, 168, 0.3);
+  box-shadow: 0 8px 24px rgba(255, 254, 255, 0.3);
 }
 
 .btn-outline {
