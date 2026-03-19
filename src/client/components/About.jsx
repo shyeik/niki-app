@@ -10,12 +10,12 @@ export default function About({ updateCount, eventCount, tutorialCount }) {
             <br />
             <em>made to inspire.</em>
           </h2>
-          <p>
+          <p className="about-desc">
             Nishimura Riki, known as NI-KI, is a Japanese idol and main dancer
             of ENHYPEN. His fluid style, magnetic stage presence, and undeniable
             charisma have captured fans worldwide.
           </p>
-          <p>
+          <p className="about-desc">
             This space is where fans stay close — through behind-the-scenes
             updates, upcoming events, and tutorials that celebrate his artistry.
           </p>

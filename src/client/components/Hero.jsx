@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="hero-orb hero-orb-3" />
 
       <div className="hero-content">
-        <p className="hero-eyebrow">ENHYPEN · Official Fan Page</p>
+        <p className="hero-eyebrow">NI-KI · Official Fan Page</p>
 
         <h1 className="hero-name">
           NI<span>-</span>KI
@@ -30,7 +30,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-scroll">
-        <span>Scroll</span>
+        <span>I fell for you, faster than I fell apart</span>
         <div className="scroll-line" />
       </div>
     </section>

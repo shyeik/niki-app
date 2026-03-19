@@ -1,17 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap");
 
 .main-page {
-  --bg: #ffc7e3;
-  --surface: #e5e3e4;
-  --surface2: #1c1318;
-  --border: rgba(255, 200, 220, 0.08);
+  --bg: #b50a5f;
+  --surface: rgba(24, 14, 24, 0.244);
+
+  --surface2: #2b1f2b6c;
+  --border: rgba(27, 27, 27, 0.08);
   --border-hover: rgba(234, 234, 234, 0.2);
-  --pink: #f7a8c4;
-  --pink-bright: #ff6fa8;
+  --pink: #fa44d5;
+  --pink-bright: hsla(316, 91%, 75%, 0.779);
   --gold: #e8c97a;
-  --text: #000000;
-  --muted: #9a8890;
-  --glow: rgba(206, 206, 206, 0.15);
+  --text: #ffffff;
+  --text2: #ffffff;
+  --muted: #000000;
+  --glow: rgba(231, 12, 151, 0.73);
 
   font-family: "DM Sans", sans-serif;
   background: var(--bg);
@@ -128,6 +130,10 @@ section {
   border-color: var(--pink);
   color: var(--pink);
   transform: translateY(-2px);
+}
+
+.about-desc {
+  color: var(--text2);
 }
 
 .empty-state {

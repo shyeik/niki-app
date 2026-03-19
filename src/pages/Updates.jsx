@@ -158,8 +158,8 @@ function Updates() {
 
   return (
     <div>
-      <h1 className="page-title">Post Content</h1>
-      <p className="page-subtitle">Post an update here!</p>
+      <h1 className="page-title">Artist Update</h1>
+      <p className="page-subtitle">What's happening today?</p>
 
       <div className="updates-page">
         {/* ── LEFT: Upload ── */}

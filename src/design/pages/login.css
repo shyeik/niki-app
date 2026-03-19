@@ -1,56 +1,508 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+KR:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap");
+
+/* ── Variables ── */
+:root {
+  --bg-deep: #07040f;
+  --bg-card: rgba(18, 10, 28, 0.85);
+  --pink: #ff2d78;
+  --pink-glow: rgba(255, 45, 120, 0.35);
+  --pink-soft: rgba(255, 45, 120, 0.12);
+  --lilac: #c084fc;
+  --lilac-glow: rgba(192, 132, 252, 0.3);
+  --gold: #fbbf24;
+  --text-white: #fdf4ff;
+  --text-dim: rgba(253, 244, 255, 0.45);
+  --border: rgba(255, 45, 120, 0.2);
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Container ── */
 .login-container {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ffe6f0, #ffd9e8);
-  font-family: 'Poppins', sans-serif;
+  justify-content: center;
+  background: var(--bg-deep);
+  position: relative;
+  overflow: hidden;
+  font-family: "DM Sans", sans-serif;
 }
 
+/* ── Animated mesh background ── */
+.login-container::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(
+      ellipse 60% 50% at 20% 30%,
+      rgba(255, 45, 120, 0.18) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 60% at 80% 70%,
+      rgba(192, 132, 252, 0.18) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 40% 40% at 50% 10%,
+      rgba(251, 191, 36, 0.08) 0%,
+      transparent 55%
+    );
+  animation: meshDrift 12s ease-in-out infinite alternate;
+}
+
+@keyframes meshDrift {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1.08) rotate(3deg);
+  }
+}
+
+/* ── Floating sparkles ── */
+.sparkle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkleFloat linear infinite;
+}
+
+.sparkle::before {
+  content: "✦";
+  color: var(--pink);
+  font-size: inherit;
+  animation: sparklePulse 2s ease-in-out infinite;
+}
+
+.sparkle:nth-child(1) {
+  font-size: 10px;
+  top: 12%;
+  left: 8%;
+  animation-duration: 9s;
+  animation-delay: 0s;
+}
+.sparkle:nth-child(2) {
+  font-size: 7px;
+  top: 25%;
+  left: 88%;
+  animation-duration: 11s;
+  animation-delay: 1s;
+  color: var(--lilac);
+}
+.sparkle:nth-child(3) {
+  font-size: 12px;
+  top: 65%;
+  left: 5%;
+  animation-duration: 8s;
+  animation-delay: 2s;
+}
+.sparkle:nth-child(4) {
+  font-size: 6px;
+  top: 80%;
+  left: 80%;
+  animation-duration: 13s;
+  animation-delay: 0.5s;
+  color: var(--gold);
+}
+.sparkle:nth-child(5) {
+  font-size: 9px;
+  top: 45%;
+  left: 93%;
+  animation-duration: 10s;
+  animation-delay: 3s;
+}
+.sparkle:nth-child(6) {
+  font-size: 8px;
+  top: 90%;
+  left: 30%;
+  animation-duration: 7s;
+  animation-delay: 1.5s;
+  color: var(--lilac);
+}
+.sparkle:nth-child(7) {
+  font-size: 11px;
+  top: 5%;
+  left: 55%;
+  animation-duration: 12s;
+  animation-delay: 4s;
+}
+.sparkle:nth-child(8) {
+  font-size: 7px;
+  top: 70%;
+  left: 60%;
+  animation-duration: 9.5s;
+  animation-delay: 2.5s;
+  color: var(--gold);
+}
+
+@keyframes sparkleFloat {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-18px) rotate(20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes sparklePulse {
+  0%,
+  100% {
+    text-shadow: 0 0 6px var(--pink-glow);
+  }
+  50% {
+    text-shadow:
+      0 0 18px var(--pink),
+      0 0 32px var(--pink-glow);
+  }
+}
+
+/* ── Horizontal scan line ── */
+.login-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--pink),
+    var(--lilac),
+    transparent
+  );
+  opacity: 0.25;
+  animation: scanLine 6s linear infinite;
+}
+
+@keyframes scanLine {
+  from {
+    top: -1px;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+/* ── Login box ── */
 .login-box {
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(255, 182, 193, 0.5);
-  width: 350px;
-  text-align: center;
+  position: relative;
+  z-index: 10;
+  width: 400px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px 40px 44px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 0 0 1px rgba(255, 45, 120, 0.08),
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px var(--pink-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  animation: boxReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+@keyframes boxReveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Corner accents */
+.login-box::before,
+.login-box::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+}
+
+.login-box::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--pink);
+  border-left: 2px solid var(--pink);
+  border-radius: 24px 0 0 0;
+}
+
+.login-box::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--lilac);
+  border-right: 2px solid var(--lilac);
+  border-radius: 0 0 24px 0;
+}
+
+/* ── Idol badge ── */
+.login-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.5s 0.15s ease both;
+}
+
+.login-badge-text {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.login-badge-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 6px var(--pink);
+}
+
+/* ── Title ── */
 .login-title {
-  margin-bottom: 10px;
-  color: #ff4da6;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 52px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: var(--text-white);
+  text-align: center;
+  margin-bottom: 4px;
+  text-shadow:
+    0 0 40px var(--pink-glow),
+    0 0 80px rgba(255, 45, 120, 0.15);
+  animation: fadeUp 0.5s 0.2s ease both;
 }
 
+.login-title-accent {
+  color: var(--pink);
+  text-shadow:
+    0 0 20px var(--pink),
+    0 0 40px var(--pink-glow);
+}
+
+/* ── Subtitle ── */
 .login-subtitle {
-  margin-bottom: 20px;
-  color: #ff80bf;
+  font-family: "Noto Serif KR", serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-dim);
+  text-align: center;
+  letter-spacing: 0.06em;
+  margin-bottom: 36px;
+  animation: fadeUp 0.5s 0.25s ease both;
+}
+
+/* ── Form ── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Input wrapper ── */
+.login-input-wrap {
+  position: relative;
+  animation: fadeUp 0.5s ease both;
+}
+
+.login-input-wrap:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.login-input-wrap:nth-child(2) {
+  animation-delay: 0.36s;
+}
+
+.login-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--text-dim);
+  pointer-events: none;
+  transition: color 0.2s;
 }
 
 .login-input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  border: 1px solid #ffc0cb;
+  padding: 14px 16px 14px 42px;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 45, 120, 0.18);
+  border-radius: 12px;
+  color: var(--text-white);
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  outline: none;
+  transition:
+    border-color 0.25s,
+    background 0.25s,
+    box-shadow 0.25s;
+  appearance: none;
+  appearance: none;
 }
 
+.login-input::placeholder {
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.login-input:focus {
+  border-color: var(--pink);
+  background: rgba(255, 45, 120, 0.06);
+  box-shadow:
+    0 0 0 3px var(--pink-soft),
+    0 0 20px var(--pink-glow);
+}
+
+.login-input:focus + .login-input-icon,
+.login-input-wrap:focus-within .login-input-icon {
+  color: var(--pink);
+}
+
+/* ── Error ── */
 .login-error {
-  color: red;
-  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  background: rgba(255, 45, 120, 0.08);
+  border: 1px solid rgba(255, 45, 120, 0.3);
+  border-radius: 10px;
+  color: #ff8ab4;
+  font-size: 12.5px;
+  font-weight: 500;
+  animation: shake 0.4s ease;
 }
 
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  60% {
+    transform: translateX(6px);
+  }
+}
+
+/* ── Button ── */
 .login-button {
+  margin-top: 6px;
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  background-color: #ff4da6;
-  color: white;
+  padding: 15px;
+  margin-top: 20px;
   border: none;
-  font-weight: bold;
+
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff2d78, #c026d3);
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.15em;
   cursor: pointer;
-  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow:
+    0 4px 24px var(--pink-glow),
+    0 0 0 1px rgba(255, 45, 120, 0.2);
+  animation: fadeUp 0.5s 0.42s ease both;
 }
 
-.login-button:hover {
-  background-color: #ff1a75;
+.login-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.login-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.15);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.login-button:hover::after {
+  left: 130%;
+}
+
+.login-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 36px var(--pink-glow),
+    0 0 60px rgba(255, 45, 120, 0.2);
+}
+
+.login-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Footer note ── */
+.login-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  animation: fadeUp 0.5s 0.5s ease both;
+}
+
+.login-footer span {
+  color: var(--pink);
+}
+
+/* ── Shared fade up ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

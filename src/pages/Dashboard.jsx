@@ -57,9 +57,7 @@ function Dashboard() {
       {/* ── Header ── */}
       <p className="dashboard-eyebrow">Overview</p>
       <h1 className="dashboard-title">Welcome back, Admin 👋</h1>
-      <p className="dashboard-subtitle">
-        Here's what's happening with Ni-Ki today.
-      </p>
+      <p className="dashboard-subtitle">Here's what's happening today.</p>
 
       {/* ── Stat Cards ── */}
       <div className="dashboard-cards">
@@ -83,7 +81,7 @@ function Dashboard() {
 
         <div className="stat-card indigo">
           <span className="stat-icon"></span>
-          <p className="stat-label">Niki Updates</p>
+          <p className="stat-label">Artist Updates</p>
           <p className="stat-value">{updates.length}</p>
         </div>
 
@@ -188,7 +186,7 @@ function Dashboard() {
         {/* 4. Niki Updates — spans 2 columns */}
         <div className="bento-cell">
           <h2 className="bento-cell-title">
-            <span>📸</span> Niki Updates
+            <span>📸</span> Artist Updates
           </h2>
           <span className="update-count-badge">
             📌 {updates.length} post{updates.length !== 1 ? "s" : ""}

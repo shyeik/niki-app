@@ -31,14 +31,14 @@ function Sidebar() {
           name: "Updates",
           path: "/admin/updates",
           icon: <FaNewspaper />,
-        },  
+        },
       ],
     },
   ];
 
   return (
     <div className="sidebar">
-      <h2 className="sidebar-title">Admin Panel</h2>
+      <h2 className="sidebar-title">Content Studio</h2>
 
       {sections.map((section) => (
         <div key={section.title} className="sidebar-section">

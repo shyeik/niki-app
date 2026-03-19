@@ -5,8 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-
+  padding: 0 40px;
   border-bottom: 1px solid #f5f2f3;
 }
 
@@ -20,6 +19,28 @@
   gap: 15px;
 }
 
+/* ── User info group ── */
+.navbar-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff4da6, #f472b6);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(255, 77, 166, 0.35);
+}
+
 .navbar-button {
   background: #ff4da6;
   color: white;
@@ -27,5 +48,9 @@
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
+.navbar-button:hover {
+  background: #e63394;
+}

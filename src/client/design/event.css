@@ -2,40 +2,42 @@
   background: var(--surface);
   border-top: 0.5px solid var(--border);
   border-bottom: 0.5px solid var(--border);
+  padding: 16px;
 }
 
+/* LIST */
 .events-list {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 12px; /* better spacing between cards */
 }
 
+/* CARD */
 .event-item {
   display: flex;
   align-items: center;
-  gap: 28px;
-  padding: 24px 28px;
+  gap: 24px;
+  padding: 20px 24px;
   background: var(--surface);
   border: 0.5px solid var(--border);
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition:
-    background 0.2s,
-    border-color 0.2s;
+  transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
 }
 
+/* LEFT ACCENT LINE */
 .event-item::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 3px;
   background: var(--pink);
   transform: scaleY(0);
-  transition: transform 0.2s;
+  transition: transform 0.25s ease;
   transform-origin: bottom;
 }
 
@@ -48,21 +50,23 @@
   transform: scaleY(1);
 }
 
+/* NUMBER */
 .event-num {
   font-family: "Cinzel", serif;
   font-size: 11px;
   color: var(--pink);
-  min-width: 28px;
+  min-width: 24px;
   letter-spacing: 0.08em;
 }
 
+/* DATE BOX */
 .event-date-col {
-  min-width: 90px;
+  min-width: 80px;
   text-align: center;
   background: var(--surface2);
   border: 0.5px solid var(--border);
-  border-radius: 3px;
-  padding: 8px 12px;
+  border-radius: 6px;
+  padding: 8px 10px;
   flex-shrink: 0;
 }
 
@@ -75,18 +79,19 @@
 
 .event-day-txt {
   font-family: "Cinzel", serif;
-  font-size: 22px;
+  font-size: 20px;
   color: var(--text);
 }
 
+/* CONTENT */
 .event-body {
   flex: 1;
 }
 
 .event-title-txt {
   font-family: "Cormorant Garamond", serif;
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 500;
   color: var(--text);
   margin-bottom: 4px;
 }
@@ -96,6 +101,7 @@
   color: var(--muted);
 }
 
+/* STATUS */
 .event-status {
   font-size: 10px;
   padding: 4px 12px;
@@ -113,4 +119,75 @@
 .event-status.past {
   border: 0.5px solid var(--muted);
   color: var(--muted);
+}
+
+/* ========================= */
+/* 📱 TABLET (<= 768px) */
+/* ========================= */
+@media (max-width: 768px) {
+  .event-item {
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .event-date-col {
+    min-width: 70px;
+  }
+
+  .event-day-txt {
+    font-size: 18px;
+  }
+
+  .event-title-txt {
+    font-size: 16px;
+  }
+}
+
+/* ========================= */
+/* 📱 MOBILE (<= 480px) */
+/* ========================= */
+@media (max-width: 480px) {
+  .event-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .event-num {
+    font-size: 10px;
+  }
+
+  .event-date-col {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  .event-month-txt {
+    font-size: 9px;
+  }
+
+  .event-day-txt {
+    font-size: 16px;
+  }
+
+  .event-body {
+    width: 100%;
+  }
+
+  .event-title-txt {
+    font-size: 15px;
+  }
+
+  .event-meta-txt {
+    font-size: 11px;
+  }
+
+  .event-status {
+    align-self: flex-start;
+    margin-top: 6px;
+  }
 }

@@ -120,12 +120,18 @@
 .hero-scroll {
   position: absolute;
   bottom: 36px;
-  left: 50%;
-  transform: translateX(-50%);
+
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
+
+  width: fit-content; /* important */
+
   opacity: 0;
   animation: fade-up 0.6s ease 1.2s forwards;
 }

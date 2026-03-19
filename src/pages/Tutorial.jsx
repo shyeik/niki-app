@@ -145,7 +145,7 @@ function Tutorials() {
 
   return (
     <div>
-      <h1 className="page-title">Ni-Ki Tutorials</h1>
+      <h1 className="page-title">Voting Tutorials</h1>
       <p className="page-subtitle">Upload and manage tutorials 🎥</p>
 
       <div className="updates-page">

@@ -62,7 +62,7 @@
   border: 1px solid #fbcfe8;
   font-size: 14px;
   background: #fff;
-
+  margin-top: 12px;
   transition: all 0.2s ease;
 }
 
@@ -70,6 +70,7 @@
 .modal-input:focus {
   border-color: #ec4899;
   outline: none;
+
   box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
 }
 

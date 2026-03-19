@@ -5,10 +5,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-logo">NI-KI</div>
       <div className="footer-note">
-        Fan-made page. All content belongs to respective owners. ENHYPEN ©
-        BELIFT LAB
+        Fan-made page. All content belongs to respective owners.
       </div>
-      <div className="footer-note">Developer: Shyeik</div>
+      <div className="footer-note">Developed by: Shyeik</div>
     </footer>
   );
 }

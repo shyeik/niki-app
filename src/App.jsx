@@ -4,7 +4,6 @@ import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import Login from "./pages/Login";
 import ProtectedRoute from "./utils/ProtectedRoute";
-import Register from "./pages/Register";
 import Events from "./pages/Events";
 import Tutorials from "./pages/Tutorial";
 import TodoList from "./pages/TodoList";
@@ -17,7 +16,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Mainpage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
 
         <Route
           path="/admin"
