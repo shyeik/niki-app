@@ -11,6 +11,7 @@ function Tutorials() {
   const [description, setDescription] = useState("");
   const [tutorials, setTutorials] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [fileError, setFileError] = useState("");
 
   // Modal state
   const [selected, setSelected] = useState(null);
@@ -42,9 +43,19 @@ function Tutorials() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  const MAX_SIZE = 100 * 1024 * 1024; // 100MB (Cloudinary limit)
+
   const handleVideoChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
+
+    // ❌ File too large
+    if (file.size > MAX_SIZE) {
+      setFileError("File exceeds 100MB limit. Please upload a smaller video.");
+      return;
+    }
+
+    setFileError(""); // clear error
     setVideo(file);
     setPreview(URL.createObjectURL(file));
   };
@@ -344,6 +355,33 @@ function Tutorials() {
                   )}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {fileError && (
+        <div className="modal-backdrop" onClick={() => setFileError("")}>
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: "400px", textAlign: "center" }}
+          >
+            <button className="modal-close" onClick={() => setFileError("")}>
+              ✕
+            </button>
+
+            <div style={{ padding: "20px" }}>
+              <h2 style={{ marginBottom: "10px" }}>⚠️ Upload Error</h2>
+              <p>{fileError}</p>
+
+              <button
+                className="action-btn"
+                style={{ marginTop: "15px" }}
+                onClick={() => setFileError("")}
+              >
+                OK
+              </button>
             </div>
           </div>
         </div>

@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import axios from "axios";
 
+// Keep these normal (important UI - above the fold)
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
-import Updates from "../sections/Updates";
-import Events from "../sections/Events";
-import Tutorials from "../sections/Tutorials";
 import Footer from "../sections/Footer";
-import Tasks from "../sections/Tasks";
+
+// Lazy load heavy sections
+const Updates = React.lazy(() => import("../sections/Updates"));
+const Events = React.lazy(() => import("../sections/Events"));
+const Tutorials = React.lazy(() => import("../sections/Tutorials"));
+const Tasks = React.lazy(() => import("../sections/Tasks"));
+
+import Loader from "../components/Loader"; // reuse your loader
 import "../../client/design/mainpage.css";
 
 const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/";
@@ -21,45 +26,36 @@ export default function Mainpage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const fetchAll = async () => {
+    try {
+      setLoading(true);
+      setError(false);
+
+      const [postsRes, eventsRes, tutorialsRes, tasksRes] = await Promise.all([
+        axios.get(`${API}api/posts`),
+        axios.get(`${API}api/events`),
+        axios.get(`${API}api/tutorials`),
+        axios.get(`${API}api/tasks`),
+      ]);
+
+      setPosts(postsRes.data);
+      setEvents(eventsRes.data);
+      setTutorials(tutorialsRes.data);
+      setTasks(tasksRes.data);
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchAll = async () => {
-      try {
-        setLoading(true);
-        setError(false);
-
-        const [postsRes, eventsRes, tutorialsRes, tasksRes] = await Promise.all(
-          [
-            axios.get(`${API}api/posts`),
-            axios.get(`${API}api/events`),
-            axios.get(`${API}api/tutorials`),
-            axios.get(`${API}api/tasks`),
-          ],
-        );
-
-        setPosts(postsRes.data);
-        setEvents(eventsRes.data);
-        setTutorials(tutorialsRes.data);
-        setTasks(tasksRes.data);
-      } catch (err) {
-        console.error(err);
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchAll();
   }, []);
 
   // ⏳ Loading UI
-  if (loading) {
-    return (
-      <div className="page-state">
-        <div className="loader"></div>
-        <p className="state-text">Loading...</p>
-      </div>
-    );
-  }
+  if (loading) return <Loader />;
 
   // ❌ Error UI
   if (error) {
@@ -67,7 +63,7 @@ export default function Mainpage() {
       <div className="page-state error">
         <div className="error-icon">⚠️</div>
         <p className="state-text">Failed to load data</p>
-        <button onClick={() => window.location.reload()}>Retry</button>
+        <button onClick={fetchAll}>Retry</button>
       </div>
     );
   }
@@ -84,10 +80,22 @@ export default function Mainpage() {
         tutorialCount={tutorials.length}
       />
 
-      <Updates posts={posts} />
-      <Events events={events} />
-      <Tasks tasks={tasks} />
-      <Tutorials tutorials={tutorials} />
+      {/* Lazy sections */}
+      <Suspense fallback={<Loader />}>
+        <Updates posts={posts} />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <Events events={events} />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <Tasks tasks={tasks} />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <Tutorials tutorials={tutorials} />
+      </Suspense>
 
       <Footer />
     </div>

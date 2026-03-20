@@ -18,7 +18,13 @@ function Login() {
     try {
       setLoading(true);
       const res = await axios.post(`${API}api/auth/login`, { name, password });
-      localStorage.setItem("token", res.data.token);
+      const session = {
+        token: res.data.token,
+        username: res.data.name,
+        expiry: Date.now() + 12 * 60 * 60 * 1000, // 12 hours
+      };
+
+      localStorage.setItem("session", JSON.stringify(session));
       localStorage.setItem("username", res.data.name);
       navigate("/admin/dashboard");
     } catch (err) {
@@ -34,7 +40,7 @@ function Login() {
       <div className="login-panel-left">
         <div className="login-panel-brand">
           <div className="login-panel-logo">
-            Ni<span>·</span>Ki
+            Artist<span>·</span>
           </div>
           <p className="login-panel-tagline">어서 오세요 · Fan Hub</p>
         </div>
