@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../design/pages/dashboard.css";
 
-const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/";
+const API = import.meta.env.VITE_API_BASE_URL;
 
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
