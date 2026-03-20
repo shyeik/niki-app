@@ -1,3 +1,5 @@
+import "../design/mainpage.css";
+
 export default function ErrorState({ onRetry }) {
   return (
     <div className="page-state error">

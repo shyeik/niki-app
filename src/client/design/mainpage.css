@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600&display=swap");
 
 .main-page {
-  --bg: #b71368;
-  --surface: #d6318661;
+  --bg: #f47bb9;
+  --surface: #c71fb078;
   --surface2: #3b333b2f;
   --border: rgba(202, 45, 155, 0.467);
   --border-hover: rgba(226, 114, 211, 0.438);

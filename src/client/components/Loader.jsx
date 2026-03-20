@@ -1,3 +1,5 @@
+import "../design/mainpage.css";
+
 export default function Loader() {
   return (
     <div className="page-state">
