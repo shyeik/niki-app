@@ -94,9 +94,6 @@ export default function Events() {
                     <div className="event-title-txt">
                       {ev.title || "Untitled Event"}
                     </div>
-                    <div className="event-meta-txt">
-                      {ev.location || ev.venue || "Location TBA"}
-                    </div>
                   </div>
 
                   <span
